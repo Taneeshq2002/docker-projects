@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${ZOOKEEPER_DEPLOYMENT_NAME}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${ZOOKEEPER_DEPLOYMENT_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${ZOOKEEPER_DEPLOYMENT_NAME}
+    spec:
+      containers:
+      - name: ${ZOOKEEPER_DEPLOYMENT_NAME}
+        image: ${ZOOKEEPER_IMAGE}
+        ports:
+        - containerPort: ${ZOOKEEPER_PORT}
